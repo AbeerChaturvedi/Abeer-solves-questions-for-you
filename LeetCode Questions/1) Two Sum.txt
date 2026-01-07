@@ -1,0 +1,23 @@
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        # Given list of numbers 'nums' and the sum as 'target'
+
+        LengthOfList = len(nums)
+        # Took length for running loop according to index and finding element
+
+        if LengthOfList < 1:
+            return []
+
+        for i in range(LengthOfList):
+            for j in range(LengthOfList):
+                # Iterate through list by keeping i index constant and comparing with j then increament i
+                if i == j:
+                    continue
+                    # Same Index will equal in repeating the same element to find the sum, hence skip
+                else:
+                    if nums[i] + nums [j] == target:
+                        return [i, j]
+                        # Answer found
+
+        # If not found
+        return False
