@@ -1,0 +1,20 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+
+        # Convert the number to string format first
+        string = str(x)
+        # empty list for storing the integer one by one
+        list_to_store = []
+        # iterate through every number in string format and append
+        for i in string:
+            list_to_store.append(i)
+
+        # check if length is more than 1 for comparing, if it is one then no comparision is needed
+        length_of_list = len(list_to_store)
+        if length_of_list == 1:
+            return True
+        else: # Create 2 pointers from front and other from front and iterate and compare each element and return true else false
+            if list_to_store[::1] == list_to_store[::-1]:
+                return True
+            else:
+                return False
