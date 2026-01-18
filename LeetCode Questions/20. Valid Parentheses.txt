@@ -1,0 +1,14 @@
+class Solution:
+    def isValid(self, s: str) -> bool:
+        dictionaryForChecking = {")":"(", "]":"[", "}":"{"} #create dictionary and map closing to opening
+        stack = [] #declare empty stack
+        for char in s:
+
+            if char in dictionaryForChecking:
+                topElement = stack.pop() if stack else "#" #if there is closing then pop the top if there is element in the stack if not then return hash as to turn it false
+
+                if dictionaryForChecking[char] != topElement:
+                    return False #top must match the current closing
+            else:
+                stack.append(char) #append the opening
+        return not stack #if stack empty then all is correct
