@@ -1,0 +1,13 @@
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        k = 0
+        #intialize first pointer and counter
+        for i in range(len(nums)):
+            if nums[i] != val:
+                #check if the num in current index is the one we need to remove, if not proceed
+                nums[k] = nums[i]
+                #overwrite the current index with the number we DO NOT want to remove
+                k += 1
+                #increament the index
+        return k
+        #return value of k
