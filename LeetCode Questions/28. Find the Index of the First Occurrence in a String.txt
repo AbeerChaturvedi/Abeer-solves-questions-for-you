@@ -1,0 +1,8 @@
+class Solution:
+    def strStr(self, haystack: str, needle: str) -> int:
+        for i in range(len(haystack)-len(needle)+1):
+            '''run loop until length gets shorter than that of the needle's'''
+            if haystack[i:i+len(needle)] == needle:
+                '''check if we find the needle by indexing from the i to the length of the needle'''
+                return i #return the index
+        return -1
