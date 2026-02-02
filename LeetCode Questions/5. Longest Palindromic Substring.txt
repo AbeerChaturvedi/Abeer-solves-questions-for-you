@@ -1,0 +1,48 @@
+class Solution:
+    def longestPalindrome(self, s: str) -> str:
+        '''
+        My first naive approach: 
+        create empty disctionary
+        intialize j as 1
+        take out length of the string
+        using for loop iterate through index 0 to end of string - 1
+        and run a while loop inside with condition while s[i] != s[j] or i <= length-1
+        and inside check condition if s[i] == s[j], if yes then in this range check by increasing i and decreasing j 
+        until both are equal or pass each other and see if they string is palondromic or not, if yes then subtract  
+        j-i
+        as this will be length of the string(value) and append to dictionary with the key (the string itself). After 
+        the entire for loop is over, we will be having all types of palondromic strings with different lengths 
+        inside our dictionary, compare the values and take out the longest palondromic by its length.
+
+        Problem with this approach: 
+        Checking if the substring is a palindrome (scanning inwards) takes up to $N$ steps.Total: $N \times N \times 
+        N = N^3$.With the constraint s.length <= 1000, $1000^3$ is 1 billion operations
+        '''
+
+        '''
+        instead of searching from outside we will now search from centre of the string
+        '''
+        
+        if not s:
+            return ""
+
+        def expand_around_center(s: str, left: int, right: int):
+            while left >= 0 and right < len(s) and s[left] == s[right]:
+                left -= 1
+                right += 1
+            return right - left - 1
+
+
+        start = 0
+        end = 0
+
+        for i in range(len(s)):
+            odd = expand_around_center(s, i, i)
+            even = expand_around_center(s, i, i + 1)
+            max_len = max(odd, even)
+            
+            if max_len > end - start:
+                start = i - (max_len - 1) // 2
+                end = i + max_len // 2
+        
+        return s[start:end+1]
