@@ -1,0 +1,16 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+        #first condition if the numRows has only 1 row or string smaller than the numRows, in that case we only need to return the string as it is
+        if numRows == 1 or numRows >= len(s):
+            return s
+        #initialize index and difference we need to bring for zig zag pattern
+        idx, d = 0, 1
+        newTable = ['']*numRows #creating equal to the number of rows we are given with string
+        for i in s:
+            newTable[idx] += i #adding strings
+            if idx == 0:
+                d = 1
+            elif idx == numRows - 1:
+                d = -1
+            idx += d
+        return ''.join(newTable)
