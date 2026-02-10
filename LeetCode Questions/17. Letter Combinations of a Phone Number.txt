@@ -1,0 +1,25 @@
+class Solution
+    def letterCombinations(self, digits str) - List[str]
+        if not digits #nothing to return if nothing is in it
+            return []
+
+        dictionary = { #mapping the digits and letters to each other
+            2abc,
+            3def,
+            4ghi,
+            5jkl,
+            6mno,
+            7pqrs,
+            8tuv,
+            9wxyz}
+
+        def createlist(index, answer) #creating function
+            if index == len(digits)
+                result.append(answer[])
+                return
+            for i in dictionary[digits[index]]
+                createlist(index+1, answer+i)
+
+        result = []
+        createlist(0, )
+        return result
